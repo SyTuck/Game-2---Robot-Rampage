@@ -2,5 +2,14 @@
 
 //git bash commands
 cd [top level game directory]
-git init			//create new git instance
-git add .			//add everything (new) to the repository (add to staging area)
+git init						//create new git instance
+git add .						//add everything (new) to the repository (add to staging area)
+git commit -m "some update description"			//flag updated files
+git remote add origin	"git hub repository URL"	//alias url to "origin"
+git push origin master					//push changes to our repository master
+
+//other commands
+git status
+
+//git gui
+gitkraken
