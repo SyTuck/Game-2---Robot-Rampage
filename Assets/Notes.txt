@@ -1,0 +1,6 @@
+
+
+//git bash commands
+cd [top level game directory]
+git init			//create new git instance
+git add .			//add everything (new) to the repository (add to staging area)
