@@ -1,3 +1,5 @@
+Last spot: Page 242 Getting Started
+
 
 
 //git bash commands
