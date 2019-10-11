@@ -29,6 +29,11 @@ public class Constants
     public const string Game = "Game";
     public const float CameraDefaultZoom = 60f;
 
+    public const float MaxAreanaX = 29.0f;
+    public const float MinAreanaX = -29.0f;
+    public const float MaxAreanaZ = 29.0f;
+    public const float MinAreanaZ = -29.0f;
+
     public static readonly int[] AllPickupTypes = new int[5]
     {
         PickUpPistolAmmo,

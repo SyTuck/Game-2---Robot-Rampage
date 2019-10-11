@@ -1,4 +1,4 @@
-Last spot: Page 275 Firing Robot Missiles
+Last spot: Page 288 spawning not working
 
 
 //git bash commands

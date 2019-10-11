@@ -23,7 +23,12 @@ public class Pickup : MonoBehaviour
         if (collider.gameObject.GetComponent<Player>() != null && collider.gameObject.tag == "Player")
         {
             collider.gameObject.GetComponent<Player>().PickUpItem(type);
+            GetComponentInParent<PickupSpawn>().PickupWasPickedUp();
             Destroy(this.gameObject);
+        }
+        else if (collider.gameObject.tag == "Wall")
+        {
+            //this.gameObject.transform.position.Set(Random.Range(Constants.MinAreanaX, Constants.MaxAreanaX), 1.0f, Random.Range(Constants.MinAreanaZ, Constants.MaxAreanaZ));
         }
     }
 }
