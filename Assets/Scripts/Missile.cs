@@ -19,6 +19,16 @@ public class Missile : MonoBehaviour
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 
+    private void OnCollisionEnter(Collision collider)
+    {
+        if ((collider.gameObject.GetComponent<Player>() != null) && (collider.gameObject.tag == "Player"))
+        {
+            collider.gameObject.GetComponent<Player>().TakeDamage(damage);
+            Destroy(gameObject);
+        }
+
+    }
+
     IEnumerator deathTimer()
     {
         yield return new WaitForSeconds(10);
