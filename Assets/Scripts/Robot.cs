@@ -74,7 +74,7 @@ public class Robot : MonoBehaviour
         {
             isDead = true;
             robot.Play("Die");
-            StartCoroutine("DestrpyRobot");
+            StartCoroutine("DestroyRobot");
             Animator ani_dy = this.gameObject.GetComponent<Animator>();
             ani_dy.SetBool("dying", true);
         }
