@@ -28,9 +28,20 @@ public class Pickup : MonoBehaviour
             spawner.GetComponent<PickupSpawn>().PickupWasPickedUp();
             Destroy(this.gameObject);
         }
-        else if (collider.gameObject.tag == "Wall")
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Wall")
         {
-            this.gameObject.transform.position.Set(Random.Range(Constants.MinAreanaX, Constants.MaxAreanaX), 1.0f, Random.Range(Constants.MinAreanaZ, Constants.MaxAreanaZ));
+            Debug.Log("Pickup Walled");
+            //this.gameObject.transform.position.Set(Random.Range(Constants.MinAreanaX, Constants.MaxAreanaX), 1.0f, Random.Range(Constants.MinAreanaZ, Constants.MaxAreanaZ));
+            //Debug.Log(this.gameObject.transform.position.x);
+            //D/ebug.Log(this.gameObject.transform.position.z);
+            GameObject spawner = GameObject.Find("PickupSpawn");
+            spawner.GetComponent<PickupSpawn>().PickupWasPickedUp();
+            Destroy(this.gameObject);
         }
+
     }
 }
