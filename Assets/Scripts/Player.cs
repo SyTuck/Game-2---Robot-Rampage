@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
         if (armour > 0)
         {
             armour -= (int)(amount / 2 + 0.5f);
+            gameUI.SetArmourText(armour);
 
             if (armour > 0)
             {
@@ -39,6 +40,7 @@ public class Player : MonoBehaviour
             else
             {
                 armour = 0;
+                gameUI.SetArmourText(armour);
             }
         }
 
@@ -47,7 +49,7 @@ public class Player : MonoBehaviour
 
         if (health <= 0)
         {
-            Debug.Log("Game Over");
+            gameUI.SetHealthText(health);
         }
     }
 
@@ -58,26 +60,46 @@ public class Player : MonoBehaviour
         {
             health = 200;
         }
+
+        gameUI.SetPickUpText("Health picked up +50 Health");
+        gameUI.SetHealthText(health);
     }
 
     private void pickupArmour()
     {
         armour += 15;
+        gameUI.SetPickUpText("Armour picked up +15 armour");
+        gameUI.SetArmourText(armour);
     }
 
     private void pickupAssaultRifleAmmo()
     {
         ammo.AddAmmo(Constants.AssaultRifle, 50);
+        gameUI.SetPickUpText("Assaut rifle ammo picked up +50 ammo");
+        if (gunEquipper.GetActiveWeapon().tag == Constants.AssaultRifle)
+        {
+            gameUI.SetAmmoText(ammo.GetAmmo(Constants.AssaultRifle));
+        }        
     }
 
     private void pickupPistolAmmo()
     {
         ammo.AddAmmo(Constants.Pistol, 20);
+        gameUI.SetPickUpText("Pistol rifle ammo picked up +20 ammo");
+        if (gunEquipper.GetActiveWeapon().tag == Constants.Pistol)
+        {
+            gameUI.SetAmmoText(ammo.GetAmmo(Constants.Pistol));
+        }
     }
 
     private void pickupShotgunAmmo()
     {
         ammo.AddAmmo(Constants.Shotgun, 10);
+        gameUI.SetPickUpText("Shotgun ammo picked up +10 ammo");
+        if (gunEquipper.GetActiveWeapon().tag == Constants.Shotgun)
+        {
+            gameUI.SetAmmoText(ammo.GetAmmo(Constants.Shotgun));
+        }
     }
 
     public void PickUpItem (int PickupType)

@@ -27,6 +27,8 @@ public class GameUI : MonoBehaviour
     [SerializeField]
     private Text waveText;
     [SerializeField]
+    private Text enemyText;
+    [SerializeField]
     private Text waveClearText;
     [SerializeField]
     private Text newWaveText;
@@ -54,7 +56,7 @@ public class GameUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetArmourText(playuer.armour);
+        SetArmourText(player.armour);
         SetHealthText(player.health);
     }
 
@@ -64,7 +66,7 @@ public class GameUI : MonoBehaviour
         
     }
 
-    public void SetArmourText(int armor)
+    public void SetArmourText(int armour)
     {
         armourText.text = "Armour: " + armourText;
     }
@@ -78,7 +80,7 @@ public class GameUI : MonoBehaviour
     }
     public void SetScoreText(int score)
     {
-        scoreTexst.text = "" + score;
+        scoreText.text = "" + score;
     }
     public void SetWaveText (int time)
     {
@@ -86,29 +88,30 @@ public class GameUI : MonoBehaviour
     }
     public void SetEnemyText(int enemies)
     {
-        SetEnemyText.text = "Enemies: " + enemies;
+        enemyText.text = "Enemies: " + enemies;
     }
 
     public void ShowWaveClearBonus()
     {
-        waveClearText.GetComponent<waveClearText>().enabled = true;
+        waveClearText.GetComponent<Text>().enabled = true;
         StartCoroutine("hideWaveClearBonus");        
     }
     IEnumerator hideWaveClearBonus()
     {
         yield return new WaitForSeconds(4);
-        waveClearText.GetComponent<waveClearText>().enabled = false;
+        waveClearText.GetComponent<Text>().enabled = false;
     }
     public void SetPickUpText(string text)
     {
-        pickupText.GetComponent<text>().enabled = true;
+        pickupText.GetComponent<Text>().enabled = true;
         pickupText.text = text;
         StopCoroutine("hidePickupText");
         StartCoroutine("hidePickupText");
-    }IEnumerator hidPickUpText()
+    }
+    IEnumerator hidePickupText()
     {
         yield return new WaitForSeconds(4);
-        pickupText.GetComponent<pickupText>().enabled = false;
+        pickupText.GetComponent<Text>().enabled = false;
     }
     public void ShowNewWaveText()
     {
@@ -118,6 +121,6 @@ public class GameUI : MonoBehaviour
     IEnumerator hideNewWaveText()
     {
         yield return new WaitForSeconds(4);
-        newWaveText.GetComponent<newWaveText>().enabled = false;
+        newWaveText.GetComponent<Text>().enabled = false;
     }
 }

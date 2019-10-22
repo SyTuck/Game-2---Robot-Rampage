@@ -84,6 +84,7 @@ public class Robot : MonoBehaviour
             StartCoroutine("DestroyRobot");
             //            Animator ani_dy = this.gameObject.GetComponent<Animator>();
             //            ani_dy.SetBool("dying", true);
+            Game.RemoveEnemy();
             GetComponent<AudioSource>().PlayOneShot(deathSound);
         }
         else
