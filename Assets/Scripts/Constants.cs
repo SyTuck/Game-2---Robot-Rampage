@@ -5,7 +5,7 @@ using UnityEngine;
 public class Constants
 {
     //scenes
-    public const string SceneBettle = "Battle";
+    public const string SceneBattle = "Battle";
     public const string SceneMenu = "MainMenu";
 
     //gun Types

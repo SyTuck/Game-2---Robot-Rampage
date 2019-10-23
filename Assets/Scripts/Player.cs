@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     public int health;
     public int armour;
     public GameUI gameUI;
+    public Game game;
+    public AudioClip playerDead;
 
     private GunEquipper gunEquipper;
     private Ammo ammo;
@@ -45,11 +47,12 @@ public class Player : MonoBehaviour
         }
 
         health -= healthDamage;
-        Debug.Log("Health is " + health);
+        gameUI.SetHealthText(health);
 
         if (health <= 0)
         {
-            gameUI.SetHealthText(health);
+            GetComponent<AudioSource>().PlayOneShot(playerDead);
+            game.GameOver();
         }
     }
 
@@ -75,7 +78,7 @@ public class Player : MonoBehaviour
     private void pickupAssaultRifleAmmo()
     {
         ammo.AddAmmo(Constants.AssaultRifle, 50);
-        gameUI.SetPickUpText("Assaut rifle ammo picked up +50 ammo");
+        gameUI.SetPickUpText("Assaut ammo picked up +50 ammo");
         if (gunEquipper.GetActiveWeapon().tag == Constants.AssaultRifle)
         {
             gameUI.SetAmmoText(ammo.GetAmmo(Constants.AssaultRifle));
@@ -85,7 +88,7 @@ public class Player : MonoBehaviour
     private void pickupPistolAmmo()
     {
         ammo.AddAmmo(Constants.Pistol, 20);
-        gameUI.SetPickUpText("Pistol rifle ammo picked up +20 ammo");
+        gameUI.SetPickUpText("Pistol ammo picked up +20 ammo");
         if (gunEquipper.GetActiveWeapon().tag == Constants.Pistol)
         {
             gameUI.SetAmmoText(ammo.GetAmmo(Constants.Pistol));
